@@ -1,2 +1,2 @@
 # Projekt-Python
-hh
+Pierwszy projekt napisany w pythonie
