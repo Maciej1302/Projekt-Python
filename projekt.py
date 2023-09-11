@@ -16,3 +16,4 @@ file.close()
 
 
 """many to dran"""
+"""kazdy many to dran"""
