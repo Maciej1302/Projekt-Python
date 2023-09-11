@@ -17,3 +17,5 @@ file.close()
 """123123"""
 
 """many to dran"""
+
+"""Kazdy many to dran"""
