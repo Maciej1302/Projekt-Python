@@ -12,5 +12,4 @@ for line in f:
     print(skladniki_przepisu)
 file.close()
 
-
-"""many to dran"""
+"""123123"""
