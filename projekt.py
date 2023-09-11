@@ -1,17 +1,19 @@
 
 #print("Wpisz swoje składniki odzielone spacją: ")
-lista_skladnikow_uzytkownika=tuple()
-lista_skladnikow_uzytkownika=input().split()
+#lista_skladnikow_uzytkownika=tuple()
+#lista_skladnikow_uzytkownika=input().split()
 
-file=open('skladniki.txt','r')
+file=open("plik.txt",'r')
 
-f=file.readlines()
+f=file.readline()
 
+print(f)
+""""
 for line in f:
     skladniki_przepisu=tuple(line.split())
     if skladniki_przepisu==lista_skladnikow_uzytkownika:
         print(skladniki_przepisu)
-
+    #print(skladniki_przepisu)
 file.close()
 
 """123123"""
