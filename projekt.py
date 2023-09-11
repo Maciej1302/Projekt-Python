@@ -13,3 +13,4 @@ for line in f:
 file.close()
 
 
+"""komdg"""
