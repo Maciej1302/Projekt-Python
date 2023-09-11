@@ -13,4 +13,4 @@ for line in f:
 file.close()
 
 
-"""komdg"""
+"""many to dran"""
