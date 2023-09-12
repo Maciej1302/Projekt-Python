@@ -52,3 +52,4 @@ def odczytywanie_odpowiednich_przepisow(lista_z_numerami_przepisow):
                 
 
 odczytywanie_odpowiednich_przepisow(lista_z_numerami_przepisow)
+"""fff"""
