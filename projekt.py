@@ -2,10 +2,11 @@
 #print("Wpisz swoje składniki odzielone spacją: ")
 lista_skladnikow_uzytkownika=["szynka","pomidor","kawior"]
 #lista_skladnikow_uzytkownika=input().split()
+lista_z_numerami_przepisow=[]
 
 def porownywarka_skladnikow_uzytkownika_z_przepisem():
 
-    lista_z_numerami_przepisow=[]
+    
     file=open("skladniki.txt",'r')
     f=file.readlines()
 
