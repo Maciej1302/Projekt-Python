@@ -26,4 +26,7 @@ def porownywarka_skladnikow_uzytkownika_z_przepisem():
     file.close()
     return lista_z_numerami_przepisow
 
-print(porownywarka_skladnikow_uzytkownika_z_przepisem())
+lista_z_numerami_przepisow= porownywarka_skladnikow_uzytkownika_z_przepisem()
+
+
+print(lista_z_numerami_przepisow)
