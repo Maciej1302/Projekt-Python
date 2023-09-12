@@ -20,13 +20,28 @@ def porownywarka_skladnikow_uzytkownika_z_przepisem():
 
         if ilosc_pasujacych_skladnikow==ilosc-1:
             print(skladniki_przepisu)
-            lista_z_numerami_przepisow.append(skladniki_przepisu[0])
+            lista_z_numerami_przepisow.append(skladniki_przepisu[0]+"przepis")
         skladniki_przepisu.clear()
         
     file.close()
     return lista_z_numerami_przepisow
 
 lista_z_numerami_przepisow= porownywarka_skladnikow_uzytkownika_z_przepisem()
-
-
 print(lista_z_numerami_przepisow)
+
+
+ktora_linia=0
+
+def odczytywanie_odpowiednich_przepisow(lista_z_numerami_przepisow):
+    file=open("przepisy.txt",'r')
+    lines=file.readlines()
+    for line in lines:
+        ktora_linia+=1
+        line=line.strip()
+
+        if line in lista_z_numerami_przepisow: #dochodzi do lini z danym nr przepisu
+            if line=='':
+                print("pusta")
+                
+
+odczytywanie_odpowiednich_przepisow(lista_z_numerami_przepisow)
