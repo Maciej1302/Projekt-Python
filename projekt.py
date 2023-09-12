@@ -12,9 +12,3 @@ for line in f:
     skladniki_przepisu=tuple(line.split())
     print(skladniki_przepisu)
 file.close()
-
-"""123123"""
-
-"""many to dran"""
-
-"""Kazdy many to dran"""
