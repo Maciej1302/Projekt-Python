@@ -10,7 +10,7 @@ from projekt import szukarka
 class FirstWindow(Screen):
     pass
 
-
+#komentarz
 class SecondWindow(Screen):
     pass
 
