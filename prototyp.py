@@ -29,7 +29,7 @@ class ThirdWindow(Screen):
 class WindowManager(ScreenManager):
     pass
 
-class Widgets(Widget):
+class Widgets(Widget): 
     pass
 
 
