@@ -22,8 +22,8 @@ class ThirdWindow(Screen):
         final_recipe=""
         for item in recipe:
             final_recipe=final_recipe+item+"\n"+"\n"
-        recipe_label=final_recipe
-        self.ids.recipe.text=recipe_label.strip("[]''")
+        
+        self.ids.recipe.text=final_recipe
     pass
 
 class WindowManager(ScreenManager):
@@ -44,3 +44,5 @@ class MyMainApp(App):
 
 if __name__ == "__main__":
     MyMainApp().run()
+
+
