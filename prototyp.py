@@ -17,11 +17,23 @@ class MyPopup(Popup):
 
 
 
+<<<<<<< HEAD
 class FirstWindow(Screen):
     
+=======
+
+
+class SecondWindow(Screen):
+>>>>>>> 26147764cb2fa6c363c846f2889028e5e6de83d2
     pass
 
+class GuestApp(Screen,Widget):
+    def GuestPress(self):
+        ingredients= self.ids.guest_ingredients.text
+        self.ids.guest_space.text=getRecipe(ingredients)
+    pass
 
+<<<<<<< HEAD
 def open_pop_up(self):
     pops = MyPopup()
     pops.open()
@@ -72,7 +84,24 @@ class RegisterWindow(Screen):
             add_user(email,passw,name,surname)
             App.get_running_app().root.current='second'
          
+=======
+class ThirdWindow(Screen,Widget):
+    def press(self):
+        ingredients= self.ids.ingredients.text
+        self.ids.recipe.text=getRecipe(ingredients)
+>>>>>>> 26147764cb2fa6c363c846f2889028e5e6de83d2
     pass
+
+
+def getRecipe(id):
+    recipe=szukarka(id)
+    final_recipe=""
+    for item in recipe:
+        final_recipe=final_recipe+item+"\n"+"\n"
+    return final_recipe
+
+
+
 
 class WindowManager(ScreenManager):
     pass
@@ -93,5 +122,4 @@ class MyMainApp(App):
 if __name__ == "__main__":
     MyMainApp().run()
 
-#123
-#321
+
