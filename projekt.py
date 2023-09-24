@@ -1,7 +1,7 @@
 import pandas as pd
 import csv
 
-
+#kom
  
 ing="salata pomidor ogorek chleb jajka bułka ser"
 

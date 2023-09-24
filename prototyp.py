@@ -9,7 +9,7 @@ from kivy.uix.popup import Popup
 from projekt import szukarka 
 from projekt import check_user_existence 
 from projekt import add_user
-
+#kom
 
 class MyPopup(Popup):
 
@@ -92,6 +92,3 @@ class MyMainApp(App):
 
 if __name__ == "__main__":
     MyMainApp().run()
-
-#123
-#321
