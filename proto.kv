@@ -1,0 +1,350 @@
+#:import Factory kivy.factory.Factory
+<MyPopup@Popup>
+    auto_dismiss:False
+    size_hint: 0.6,0.7
+    pos_hint:{"x":0.2,"top":0.9}
+    title:"ERROR"
+    BoxLayout:
+        orientation:"vertical"
+        size: root.width, root.height
+        Label:
+            text: "Wrong input"
+            font_size:26
+        Button:
+            size_hint: 0.8,0.2
+            pos_hint:{"x":0.1}
+            text:"Close"
+            on_release: root.dismiss()
+
+WindowManager:
+    FirstWindow:
+    SecondWindow:
+    ThirdWindow:
+    RegisterWindow:
+
+
+<FirstWindow>
+    name:"first"
+    BoxLayout:
+        orientation: "vertical"
+        padding: 100
+
+        canvas.before:
+            Color:
+                rgba: 1, 1, 1, 1  # Ustaw kolor tła na biały
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        AnchorLayout:
+            anchor_x: "center"
+            anchor_y: "center"
+
+            GridLayout:
+                rows: 3
+                spacing: 20
+        
+    
+                cols:1
+    
+        Button:
+            size_hint: 0.1, 0.2
+            text: "Login as Guest"
+            font_size:20
+            background_color: "blue"
+            color:0.9,0.255,0.255,1
+        Button:
+            size_hint: 0.1, 0.2
+            text: "Login"
+            font_size:20
+            background_color: "blue"
+            
+            on_release:
+                app.root.current = "second"
+                root.manager.transition.direction = "up"
+        Button:
+            text: "Register"
+            background_color: "blue"
+            font_size:20
+            size_hint: 0.1, 0.2
+            color:0.9,0.255,0.255,1
+            
+            on_release:
+                app.root.current = "register_window"
+                root.manager.transition.direction = "up"
+
+<ThirdWindow>
+    name:"third"
+
+
+    GridLayout:
+        cols:1
+        Label:
+            id:recipe
+            font_size:20
+            text:"Enter your ingredients"
+            color:0.9,0.255,0.255,1
+            
+        TextInput:
+            id:ingredients
+            on_release:
+            multiline:False
+        
+        
+        Button:
+            text: "Find your recipe"
+            background_color: "grey"
+            font_size:20
+            size_hint: 0.1, 0.2
+                
+            on_release:
+                root.press()
+                ingredients.text=""
+        
+        Button:
+            text: "Go Back"
+            background_color: "grey"
+            font_size:20
+            size_hint: 0.1, 0.2
+                
+            on_release:
+                app.root.current = "second"
+                root.manager.transition.direction = "down"
+               
+<RegisterWindow>:
+    name:"register_window"
+    GridLayout:
+        cols:1
+        Label:
+            text: "Enter your name:"
+            font_size:20
+        
+        TextInput:
+            id: name
+            multiline:False
+        
+        Label:
+            text:"Enter your surname:"
+            font_size:20
+        
+        TextInput:
+            id: surname
+            multiline:False
+        
+        
+        Label:
+            text:"Enter your email:"
+            font_size:20
+        
+        TextInput:
+            id: email
+            multiline:False
+        Label:
+            text:"Enter your password:"
+            font_size:20
+        
+        TextInput:
+            id: register_passw
+            multiline:False
+        
+        Label:
+            text:"Enter your date of birth:"
+            font_size:20
+        
+        TextInput:
+            id: date_birth
+            multiline:False
+
+        Button:
+            text: "Submit"
+            on_release: 
+                root.verification()
+                email.text=""
+                name.text=""
+                surname.text=""
+                register_passw.text=""
+
+        
+        Button:
+            text: "Go Back"
+            background_color: "grey"
+            font_size:20
+            size_hint: 0.3, 0.9
+            on_release:
+                app.root.current = "first"
+                root.manager.transition.direction = "down"
+<SecondWindow>:
+    name: "second"
+    BoxLayout:
+        orientation: "vertical"
+        padding: 100
+
+        canvas.before:
+            Color:
+                rgba: 1, 1, 1, 1  # Ustaw kolor tła na biały
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        AnchorLayout:
+            anchor_x: "center"
+            anchor_y: "center"
+
+            GridLayout:
+                rows: 6
+                spacing: 20
+
+                Label:
+                    text: "Email"
+                    font_size: 20
+                    color: 0, 0, 0, 1
+                    valign: "middle"  # Wyśrodkuj napis w pionie
+                    halign: "left"  # Wyrównaj napis do lewej strony
+                    size_hint_y: 0.02
+
+                TextInput:
+                    id: login
+                    multiline: False
+
+                Label:
+                    text: "Password"
+                    font_size: 20
+                    color: 0, 0, 0, 1
+                    valign: "middle"  # Wyśrodkuj napis w pionie
+                    halign: "left"  # Wyrównaj napis do lewej strony
+                    size_hint_y: 0.02
+
+                TextInput:
+                    id: password
+                    multiline: False
+
+                BoxLayout:
+                    spacing: 10  # Odstęp tylko między przyciskami w tym kontenerze
+
+                    Button:
+                        text: "Sign In"
+                        background_color: "grey"
+                        font_size: 20
+                        size_hint: 0.3, 0.9
+
+                        on_release:
+                            app.root.current = "third" if login.text == "" and password.text == "" else "second"
+                            login.text = ""
+                            password.text = ""
+
+                    Button:
+                        text: "Go Back"
+                        background_color: "grey"
+                        font_size: 20
+                        size_hint: 0.3, 0.9
+                        on_release:
+                            app.root.current = "first"
+                            root.manager.transition.direction = "down"
+
+
+
+<GuestApp>
+    name: "guestapp"
+    
+    BoxLayout:
+        orientation: "vertical"
+        padding: 20 
+
+        canvas.before:
+            Color:
+                rgba: 1, 1, 1, 1  # Ustaw kolor tła na biały
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        AnchorLayout:
+            anchor_x: "center"
+            anchor_y: "center"
+
+            GridLayout:
+                rows: 5
+
+                BoxLayout:
+                    orientation: "vertical"
+                    Label:
+                        id: guest_recipe
+                        text: "Enter your ingredients"
+                        color: 0, 0, 0, 1
+                        font_size: 24 
+                    TextInput:
+                        id: guest_ingredients
+                        multiline: True
+
+                Label:
+                    text: "Suggested recipes:"
+                    x: -50 
+                    color: 0, 0, 0, 1
+                    font_size: 20
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                    padding: 10
+
+                Label:
+                    id: guest_space
+                    color: 0, 0, 0, 1
+                Button:
+                    text: "Find your recipe"
+                    background_color: "grey"
+                    font_size: 20
+                    size_hint: 0.1, 0.2
+                    on_release:
+                        root.GuestPress()
+                        
+
+                Button:
+                    text: "Go back"
+                    background_color: "grey"
+                    font_size: 20
+                    size_hint: 0.1, 0.2
+                    on_release:
+                        app.root.current = "first"
+                        root.manager.transition.direction = "up"
+
+
+        Label:
+            text: "Email:"
+            font_size:20
+        
+        TextInput:
+            id: login
+            multiline:False
+        
+        Label:
+            text:"Pasword"
+            font_size:20
+        TextInput:
+            id: password
+            multiline: False 
+        
+        Button:
+            text: "Sign In"
+            background_color: "grey"
+            font_size:20
+            size_hint: 0.3, 0.9
+
+            on_release:
+                root.verification()
+                
+                login.text=""
+                password.text=""
+        
+        Button:
+            text: "Go Back"
+            background_color: "grey"
+            font_size:20
+            size_hint: 0.3, 0.9
+            on_release:
+                app.root.current = "first"
+                root.manager.transition.direction = "down"
+
+
+                
+                
+                
+         
+           
