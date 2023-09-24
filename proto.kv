@@ -1,27 +1,9 @@
-#:import Factory kivy.factory.Factory
-<MyPopup@Popup>
-    auto_dismiss:False
-    size_hint: 0.6,0.7
-    pos_hint:{"x":0.2,"top":0.9}
-    title:"ERROR"
-    BoxLayout:
-        orientation:"vertical"
-        size: root.width, root.height
-        Label:
-            text: "Wrong input"
-            font_size:26
-        Button:
-            size_hint: 0.8,0.2
-            pos_hint:{"x":0.1}
-            text:"Close"
-            on_release: root.dismiss()
-
 WindowManager:
     FirstWindow:
     SecondWindow:
     ThirdWindow:
-    RegisterWindow:
     GuestApp:
+
 <FirstWindow>
     name:"first"
     BoxLayout:
@@ -42,10 +24,10 @@ WindowManager:
             GridLayout:
                 rows: 3
                 spacing: 20
-        
-    
+
+
                 Button:
-                    
+
                     size_hint: 0.1, 0.1
                     text: "Login as Guest"
                     font_size:20
@@ -53,16 +35,16 @@ WindowManager:
                     color:1, 1, 1, 1
                     on_release:
                         root.manager.transition.direction = "down"
-                    
+
                     on_release:
                         app.root.current = "guestapp"
                 Button:
-                    
+
                     size_hint: 0.1, 0.1
                     text: "Login"
                     font_size:20
                     background_color: "blue"
-                    
+
                     on_release:
                         app.root.current = "second"
                         root.manager.transition.direction = "up"
@@ -85,112 +67,35 @@ WindowManager:
             font_size:20
             text:"Enter your ingredients"
             color:0.9,0.255,0.255,1
-            
+
         TextInput:
             id:ingredients
             on_release:
             multiline:False
-        
-        
+
+
         Button:
             text: "Find your recipe"
             background_color: "grey"
             font_size:20
             size_hint: 0.1, 0.2
-                
+
             on_release:
                 root.press()
                 ingredients.text=""
-        
+
         Button:
             text: "Go Back"
             background_color: "grey"
             font_size:20
             size_hint: 0.1, 0.2
-                
+
             on_release:
                 app.root.current = "second"
                 root.manager.transition.direction = "down"
-               
 
 
-<SecondWindow>:
-    name: "second"
-    BoxLayout:
-        orientation: "vertical"
-        padding: 100
 
-        canvas.before:
-            Color:
-                rgba: 1, 1, 1, 1  # Ustaw kolor tła na biały
-            Rectangle:
-                pos: self.pos
-                size: self.size
-
-        AnchorLayout:
-            anchor_x: "center"
-            anchor_y: "center"
-
-    GridLayout:
-        cols:1
-        Label:
-            text: "Enter your name:"
-            font_size:20
-        
-        TextInput:
-            id: name
-            multiline:False
-        
-        Label:
-            text:"Enter your surname:"
-            font_size:20
-        
-        TextInput:
-            id: surname
-            multiline:False
-        
-        
-        Label:
-            text:"Enter your email:"
-            font_size:20
-        
-        TextInput:
-            id: email
-            multiline:False
-        Label:
-            text:"Enter your password:"
-            font_size:20
-        
-        TextInput:
-            id: register_passw
-            multiline:False
-        
-        Label:
-            text:"Enter your date of birth:"
-            font_size:20
-        
-        TextInput:
-            id: date_birth
-            multiline:False
-
-        Button:
-            text: "Submit"
-            on_release: 
-                root.verification()
-                email.text=""
-                name.text=""
-                surname.text=""
-                register_passw.text=""
-
-        
-        Button:
-            text: "Go Back"
-            background_color: "grey"
-            font_size:20
-            size_hint: 0.3, 0.9
-            on_release:
-                app.root.current = "first"
-                root.manager.transition.direction = "down"
 <SecondWindow>:
     name: "second"
     BoxLayout:
@@ -245,26 +150,25 @@ WindowManager:
                         font_size: 20
                         size_hint: 0.3, 0.9
 
-            on_release:
-                root.verification()
-                
-                login.text=""
-                password.text=""
-        
-        Button:
-            text: "Go Back"
-            background_color: "grey"
-            font_size:20
-            size_hint: 0.3, 0.9
-            on_release:
-                app.root.current = "first"
-                root.manager.transition.direction = "down"
+                        on_release:
+                            app.root.current = "third" if login.text == "" and password.text == "" else "second"
+                            login.text = ""
+                            password.text = ""
+
+                    Button:
+                        text: "Go Back"
+                        background_color: "grey"
+                        font_size: 20
+                        size_hint: 0.3, 0.9
+                        on_release:
+                            app.root.current = "first"
+                            root.manager.transition.direction = "down"
 
 
 
 <GuestApp>
     name: "guestapp"
-    
+
     BoxLayout:
         orientation: "vertical"
         padding: 20 
@@ -313,7 +217,7 @@ WindowManager:
                     size_hint: 0.1, 0.2
                     on_release:
                         root.GuestPress()
-                        
+
 
                 Button:
                     text: "Go back"
@@ -323,13 +227,3 @@ WindowManager:
                     on_release:
                         app.root.current = "first"
                         root.manager.transition.direction = "up"
-
-
-
-
-
-                
-                
-                
-         
-           
