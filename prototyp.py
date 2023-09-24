@@ -12,23 +12,33 @@ class FirstWindow(Screen):
 
 
 
-=======
-#komentarz
+
 
 class SecondWindow(Screen):
     pass
 
+class GuestApp(Screen,Widget):
+    def GuestPress(self):
+        ingredients= self.ids.guest_ingredients.text
+        self.ids.guest_space.text=getRecipe(ingredients)
+    pass
 
-class ThirdWindow(Screen):
+class ThirdWindow(Screen,Widget):
     def press(self):
         ingredients= self.ids.ingredients.text
-        recipe=szukarka(ingredients)
-        final_recipe=""
-        for item in recipe:
-            final_recipe=final_recipe+item+"\n"+"\n"
-        
-        self.ids.recipe.text=final_recipe
+        self.ids.recipe.text=getRecipe(ingredients)
     pass
+
+
+def getRecipe(id):
+    recipe=szukarka(id)
+    final_recipe=""
+    for item in recipe:
+        final_recipe=final_recipe+item+"\n"+"\n"
+    return final_recipe
+
+
+
 
 class WindowManager(ScreenManager):
     pass
@@ -49,10 +59,4 @@ class MyMainApp(App):
 if __name__ == "__main__":
     MyMainApp().run()
 
-#123
-
-#321
-#521
-
-#321
 
