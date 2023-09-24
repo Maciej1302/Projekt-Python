@@ -1,7 +1,26 @@
+#:import Factory kivy.factory.Factory
+<MyPopup@Popup>
+    auto_dismiss:False
+    size_hint: 0.6,0.7
+    pos_hint:{"x":0.2,"top":0.9}
+    title:"ERROR"
+    BoxLayout:
+        orientation:"vertical"
+        size: root.width, root.height
+        Label:
+            text: "Wrong input"
+            font_size:26
+        Button:
+            size_hint: 0.8,0.2
+            pos_hint:{"x":0.1}
+            text:"Close"
+            on_release: root.dismiss()
+
 WindowManager:
     FirstWindow:
     SecondWindow:
     ThirdWindow:
+    RegisterWindow:
 
 
 <FirstWindow>
@@ -33,6 +52,10 @@ WindowManager:
             font_size:20
             size_hint: 0.1, 0.2
             color:0.9,0.255,0.255,1
+            
+            on_release:
+                app.root.current = "register_window"
+                root.manager.transition.direction = "up"
 
 <ThirdWindow>
     name:"third"
@@ -71,8 +94,68 @@ WindowManager:
                 app.root.current = "second"
                 root.manager.transition.direction = "down"
                
+<RegisterWindow>:
+    name:"register_window"
+    GridLayout:
+        cols:1
+        Label:
+            text: "Enter your name:"
+            font_size:20
+        
+        TextInput:
+            id: name
+            multiline:False
+        
+        Label:
+            text:"Enter your surname:"
+            font_size:20
+        
+        TextInput:
+            id: surname
+            multiline:False
+        
+        
+        Label:
+            text:"Enter your email:"
+            font_size:20
+        
+        TextInput:
+            id: email
+            multiline:False
+        Label:
+            text:"Enter your password:"
+            font_size:20
+        
+        TextInput:
+            id: register_passw
+            multiline:False
+        
+        Label:
+            text:"Enter your date of birth:"
+            font_size:20
+        
+        TextInput:
+            id: date_birth
+            multiline:False
 
+        Button:
+            text: "Submit"
+            on_release: 
+                root.verification()
+                email.text=""
+                name.text=""
+                surname.text=""
+                register_passw.text=""
 
+        
+        Button:
+            text: "Go Back"
+            background_color: "grey"
+            font_size:20
+            size_hint: 0.3, 0.9
+            on_release:
+                app.root.current = "first"
+                root.manager.transition.direction = "down"
 <SecondWindow>:
     name:"second"
 
@@ -80,7 +163,7 @@ WindowManager:
         cols:1
 
         Label:
-            text: "Login:"
+            text: "Email:"
             font_size:20
         
         TextInput:
@@ -92,8 +175,7 @@ WindowManager:
             font_size:20
         TextInput:
             id: password
-            multiline: False
-            
+            multiline: False 
         
         Button:
             text: "Sign In"
@@ -102,7 +184,8 @@ WindowManager:
             size_hint: 0.3, 0.9
 
             on_release:
-                app.root.current = "third" if login.text == "" and password.text == "" else "second"
+                root.verification()
+                
                 login.text=""
                 password.text=""
         
